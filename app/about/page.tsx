@@ -12,8 +12,9 @@ export default function AboutPage() {
             <div className="space-y-2">
               <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl text-white">About Me</h1>
               <p className="max-w-[700px] text-gray-400 md:text-xl/relaxed">
-                Cybersecurity professional with over 15 years of experience protecting organizations from evolving
-                threats.
+Cybersecurity enthuasist with a background in<br></br> computer networking, cybersecurity and digital forensics.                <br></br>
+                I also go by the name darpwn. 
+
               </p>
             </div>
           </div>
@@ -29,17 +30,15 @@ export default function AboutPage() {
           <div className="grid gap-10 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_500px]">
             <div className="flex flex-col justify-center space-y-6">
               <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">John Smith</h2>
+                <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Darpan Mahato</h2>
                 <p className="text-xl text-muted-foreground">
-                  <span className="text-primary font-semibold">Cybersecurity Consultant & Penetration Tester</span>
+                  <span className="text-primary font-semibold">Cybersecurity Enthusiast</span>
                 </p>
               </div>
               <div className="space-y-4">
                 <p className="text-muted-foreground">
-                  I am a dedicated cybersecurity professional with a passion for helping organizations strengthen their
-                  security posture and protect their valuable digital assets. With over 15 years of experience in the
-                  industry, I have worked with clients across various sectors, from financial services and healthcare to
-                  government and technology.
+                  I am a cybersecurity enthusiast with a passion for helping organizations strengthen their
+                  security posture and protect their valuable digital assets. I have gathered extensive skills and experience by completing various labs and challenges, including those on Hack The Box, TryHackMe, and other platforms. My journey in cybersecurity has equipped me with a solid foundation in penetration testing, security architecture, and incident response.
                 </p>
                 <p className="text-muted-foreground">
                   My approach combines technical expertise with a deep understanding of business needs, allowing me to
@@ -48,10 +47,9 @@ export default function AboutPage() {
                   and resilience.
                 </p>
                 <p className="text-muted-foreground">
-                  Throughout my career, I have helped organizations identify and address security vulnerabilities,
-                  implement robust security programs, and respond effectively to security incidents. I am committed to
-                  staying at the forefront of the rapidly evolving cybersecurity landscape and sharing my knowledge with
-                  clients and the broader security community.
+                  I am committed to continuous learning and staying up-to-date with the latest threats and trends in the
+                  cybersecurity landscape. I enjoy sharing my knowledge through writing articles, giving talks, and
+                  mentoring others in the field.
                 </p>
               </div>
             </div>
@@ -60,8 +58,8 @@ export default function AboutPage() {
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full blur-3xl opacity-20"></div>
                 <div className="relative overflow-hidden rounded-xl border border-primary/20 bg-background p-2">
                   <Image
-                    src="/cyber-guardian.png"
-                    alt="John Smith - Cybersecurity Professional"
+                    src="/darpwn.jpg"
+                    alt="Darpwn - Cybersecurity Enthusiast"
                     width={500}
                     height={500}
                     className="rounded-lg object-cover w-full h-full"
@@ -92,12 +90,12 @@ export default function AboutPage() {
                 <div className="bg-primary/10 p-3 w-fit rounded-lg mb-4">
                   <Award className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle>CISSP</CardTitle>
-                <CardDescription>Certified Information Systems Security Professional</CardDescription>
+                <CardTitle>Cyberops Associate</CardTitle>
+                <CardDescription>Cisco</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  Globally recognized certification demonstrating expertise across eight security domains.
+                  Cyberops Associate certification, proves the expertise in essential cybersecurity skills, concepts, and technologies.
                 </p>
               </CardContent>
             </Card>
@@ -107,12 +105,12 @@ export default function AboutPage() {
                 <div className="bg-primary/10 p-3 w-fit rounded-lg mb-4">
                   <Award className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle>OSCP</CardTitle>
-                <CardDescription>Offensive Security Certified Professional</CardDescription>
+                <CardTitle>SC-900</CardTitle>
+                <CardDescription>Microsoft</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  Hands-on penetration testing certification proving practical exploitation skills.
+                  Security, Compliance, and Identity Fundamentals demonstrate a functional understanding of security, compliance, and identity (SCI) across cloud-based and related Microsoft services.
                 </p>
               </CardContent>
             </Card>
@@ -122,12 +120,13 @@ export default function AboutPage() {
                 <div className="bg-primary/10 p-3 w-fit rounded-lg mb-4">
                   <Award className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle>CCSP</CardTitle>
-                <CardDescription>Certified Cloud Security Professional</CardDescription>
+                <CardTitle>
+IT Specialist - Python</CardTitle>
+                <CardDescription>Certiport</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  Specialized certification in cloud security architecture, design, and operations.
+                  Earners of this badge demonstrate that they can recognize, write, and debug Python code that will logically solve a problem.
                 </p>
               </CardContent>
             </Card>
@@ -135,14 +134,14 @@ export default function AboutPage() {
             <Card className="bg-background border-primary/20">
               <CardHeader className="pb-2">
                 <div className="bg-primary/10 p-3 w-fit rounded-lg mb-4">
-                  <GraduationCap className="h-6 w-6 text-primary" />
+                  <Award className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle>M.S. Cybersecurity</CardTitle>
-                <CardDescription>Stanford University</CardDescription>
+                <CardTitle>AWS Academy Cloud Foundations</CardTitle>
+                <CardDescription>AWS</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  Advanced degree with focus on security architecture and threat intelligence.
+                  Earners of this badge have taken the AWS Academy Cloud Foundations course.
                 </p>
               </CardContent>
             </Card>
@@ -265,17 +264,16 @@ export default function AboutPage() {
               </div>
               <div className="w-full md:w-[calc(50%-4rem)] bg-background p-5 rounded-lg border border-primary/20 shadow-sm">
                 <div className="flex items-center justify-between space-x-2 mb-1">
-                  <h3 className="font-bold text-lg">Principal Security Consultant</h3>
+                  <h3 className="font-bold text-lg">Cybersecurity Intern</h3>
                   <time className="font-semibold text-primary flex items-center">
                     <Calendar className="h-4 w-4 mr-1" />
-                    2018 - Present
+                    2025 - Present
                   </time>
                 </div>
-                <p className="text-muted-foreground mb-2">CyberShield Consulting</p>
+                <p className="text-muted-foreground mb-2">Ausbiz Consulting</p>
                 <p className="text-sm text-muted-foreground">
-                  Leading complex security assessments and penetration tests for Fortune 500 clients. Developing custom
-                  security frameworks and methodologies. Mentoring junior security consultants and delivering executive
-                  briefings on critical security findings.
+                  Assisting in vulnerability assessments and penetration testing. Supporting incident response efforts and
+                  security monitoring. Collaborating with senior engineers on security architecture design and implementation.
                 </p>
               </div>
             </div>
@@ -286,17 +284,16 @@ export default function AboutPage() {
               </div>
               <div className="w-full md:w-[calc(50%-4rem)] bg-background p-5 rounded-lg border border-primary/20 shadow-sm">
                 <div className="flex items-center justify-between space-x-2 mb-1">
-                  <h3 className="font-bold text-lg">Senior Security Engineer</h3>
+                  <h3 className="font-bold text-lg">Security Intern</h3>
                   <time className="font-semibold text-primary flex items-center">
                     <Calendar className="h-4 w-4 mr-1" />
-                    2014 - 2018
+                    2023
                   </time>
                 </div>
-                <p className="text-muted-foreground mb-2">SecureTech Solutions</p>
+                <p className="text-muted-foreground mb-2">Protozoa Host</p>
                 <p className="text-sm text-muted-foreground">
-                  Designed and implemented security architectures for cloud migrations. Led vulnerability management
-                  program and security operations center (SOC) initiatives. Conducted internal security assessments and
-                  developed remediation strategies.
+                  Assisted in security audits and compliance checks. Supported the development of security policies and
+                  procedures. Participated in incident response drills and security awareness training.
                 </p>
               </div>
             </div>
@@ -307,17 +304,16 @@ export default function AboutPage() {
               </div>
               <div className="w-full md:w-[calc(50%-4rem)] bg-background p-5 rounded-lg border border-primary/20 shadow-sm">
                 <div className="flex items-center justify-between space-x-2 mb-1">
-                  <h3 className="font-bold text-lg">Security Analyst</h3>
+                  <h3 className="font-bold text-lg">Cyberops Member</h3>
                   <time className="font-semibold text-primary flex items-center">
                     <Calendar className="h-4 w-4 mr-1" />
-                    2010 - 2014
+                    2023
                   </time>
                 </div>
-                <p className="text-muted-foreground mb-2">Global Financial Services</p>
+                <p className="text-muted-foreground mb-2">Islington College</p>
                 <p className="text-sm text-muted-foreground">
-                  Performed security monitoring and incident response for a major financial institution. Conducted
-                  vulnerability assessments and security awareness training. Assisted in developing security policies
-                  and procedures.
+                  Participated in cybersecurity competitions and capture the flag (CTF) events. Collaborated with peers on
+                  security projects and research. Engaged in community outreach to promote cybersecurity awareness.
                 </p>
               </div>
             </div>

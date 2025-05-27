@@ -1,9 +1,22 @@
 import { checkDatabaseStatus } from "@/app/actions/database";
+import { isAdmin } from "@/lib/auth";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 
 export default async function DbTestPage() {
+  const admin = await isAdmin();
+  if (!admin) {
+    return (
+      <div className="container py-12 flex flex-col items-center justify-center">
+        <div className="w-full max-w-md p-8 bg-red-50 dark:bg-red-900/20 rounded-md text-center">
+          <h2 className="text-2xl font-bold mb-2 text-red-800 dark:text-red-300">403 Forbidden</h2>
+          <p className="text-red-700 dark:text-red-300">You must be an admin to access this page.</p>
+        </div>
+      </div>
+    );
+  }
+
   const result = await checkDatabaseStatus();
 
   return (
