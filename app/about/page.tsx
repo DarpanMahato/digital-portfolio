@@ -90,7 +90,7 @@ Cybersecurity enthuasist with a background in<br></br> computer networking, cybe
                 <div className="bg-primary/10 p-3 w-fit rounded-lg mb-4">
                   <Award className="h-6 w-6 text-primary" />
                 </div>
-                <CardTitle>Cyberops Associate</CardTitle>
+                <CardTitle>CyberOps Associate</CardTitle>
                 <CardDescription>Cisco</CardDescription>
               </CardHeader>
               <CardContent>

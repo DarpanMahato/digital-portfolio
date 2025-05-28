@@ -184,7 +184,7 @@ export default async function Home() {
               <div className="space-y-2">
                 <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm text-primary">Experience</div>
                 <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                  15+ Years of Cybersecurity Expertise
+                  5+ Years of Cybersecurity Experience
                 </h2>
                 <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed">
                   With extensive experience in the cybersecurity industry, I&apos;ve helped organizations of all sizes
@@ -196,25 +196,25 @@ export default async function Home() {
                   <div className="rounded-full bg-primary/10 p-1">
                     <Shield className="h-4 w-4 text-primary" />
                   </div>
-                  <span>Certified Information Systems Security Professional (CISSP)</span>
+                  <span>CyberOps Associate (Cisco CyberOps)</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <div className="rounded-full bg-primary/10 p-1">
                     <Shield className="h-4 w-4 text-primary" />
                   </div>
-                  <span>Certified Ethical Hacker (CEH)</span>
+                  <span>SC-900 (Microsoft)</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <div className="rounded-full bg-primary/10 p-1">
                     <Shield className="h-4 w-4 text-primary" />
                   </div>
-                  <span>Offensive Security Certified Professional (OSCP)</span>
+                  <span>IT Specialist - Python (Certiport)</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <div className="rounded-full bg-primary/10 p-1">
                     <Shield className="h-4 w-4 text-primary" />
                   </div>
-                  <span>Certified Cloud Security Professional (CCSP)</span>
+                  <span>AWS Academy Cloud Foundations (AWS)</span>
                 </li>
               </ul>
               <div>
