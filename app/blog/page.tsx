@@ -30,13 +30,13 @@ export default async function BlogPage() {
       <section className="w-full py-12 md:py-24 lg:py-32 bg-background">
         <div className="container px-4 md:px-6">
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {data.docs.map((post: any) => ( // Changed to data.docs
+            {data.docs.map((post: any) => (
               <Card key={post.id} className="overflow-hidden">
-                {post.coverImage && ( // Use coverImage instead of imageUrl
+                {post.heroImage?.url && (
                   <Link href={`/blog/${post.slug}`}>
                     <Image
-                      src={post.coverImage} // Use coverImage
-                      alt={post.title}
+                      src={post.heroImage.url}
+                      alt={post.heroImage.alt || post.title}
                       width={400}
                       height={225}
                       className="w-full h-48 object-cover"
@@ -45,12 +45,12 @@ export default async function BlogPage() {
                 )}
                 <CardHeader>
                   <CardTitle>{post.title}</CardTitle>
-                  {/* Excerpt is not nullable in the schema, so no need for null check */}
-                  <CardDescription>{post.excerpt}</CardDescription>
+                  <CardDescription>{post.meta?.description || post.excerpt || ''}</CardDescription>
                 </CardHeader>
                 <CardContent className="mt-auto">
-                  {/* Ensure formatDate handles Date | null if createdAt can be null */}
-                  <p className="text-sm text-muted-foreground">{post.createdAt ? formatDate(post.createdAt) : 'Date unavailable'}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {post.publishedAt ? formatDate(post.publishedAt) : 'Date unavailable'}
+                  </p>
                 </CardContent>
               </Card>
             ))}
