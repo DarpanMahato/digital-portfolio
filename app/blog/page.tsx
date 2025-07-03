@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 async function getPosts() {
   // Replace with your Payload CMS API endpoint
@@ -36,24 +37,26 @@ export default async function BlogPage() {
         <div className="container px-4 md:px-6">
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {posts.map((post: any) => (
-              <div key={post.id} className="overflow-hidden border rounded-lg bg-white dark:bg-gray-900">
+              <Link
+                href={`/blog/${post.slug}`}
+                key={post.id}
+                className="overflow-hidden border rounded-lg bg-white dark:bg-gray-900 hover:shadow-lg transition-shadow"
+              >
                 {post.coverImage && (
-                  <a href={`/blog/${post.slug}`}>
-                    <img
-                      src={post.coverImage}
-                      alt={post.title}
-                      width={400}
-                      height={225}
-                      className="w-full h-48 object-cover"
-                    />
-                  </a>
+                  <img
+                    src={post.coverImage}
+                    alt={post.title}
+                    width={400}
+                    height={225}
+                    className="w-full h-48 object-cover"
+                  />
                 )}
                 <div className="p-4">
                   <h2 className="text-xl font-semibold">{post.title}</h2>
                   <p className="text-gray-600 dark:text-gray-300">{post.excerpt}</p>
                   <p className="text-sm text-muted-foreground mt-2">{post.createdAt ? new Date(post.createdAt).toLocaleDateString() : 'Date unavailable'}</p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
