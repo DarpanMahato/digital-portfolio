@@ -6,6 +6,16 @@ import { NewsletterForm } from "@/components/newsletter-form"
 import { notFound } from "next/navigation"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
+function richTextToPlainText(richText: any): string {
+  // Quick and dirty: flatten all text nodes
+  if (!richText || !richText.root || !Array.isArray(richText.root.children)) return "";
+  return richText.root.children.map((block: any) =>
+    Array.isArray(block.children)
+      ? block.children.map((child: any) => child.text).join(" ")
+      : ""
+  ).join("\n\n");
+}
+
 async function getBlogPost(slug: string) {
   try {
     const res = await fetch(`https://payload.darpanmahato.com.np/api/posts?where[slug][equals]=${slug}`)
@@ -53,18 +63,22 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
     notFound()
   }
 
+  // Use heroImage if available
+  const imageUrl = post.heroImage?.url ? `https://payload.darpanmahato.com.np${post.heroImage.url}` : "/placeholder.svg?height=600&width=1200&query=cybersecurity";
+  const content = richTextToPlainText(post.content);
+
   return (
     <div className="flex flex-col">
       <div className="w-full h-[400px] relative bg-black">
-        <Image
-          src={post.coverImage || "/placeholder.svg?height=600&width=1200&query=cybersecurity"}
-          fill
+        {/* Use normal img for quick fix */}
+        <img
+          src={imageUrl}
           alt={post.title}
-          className="object-cover opacity-70"
+          className="object-cover opacity-70 w-full h-full absolute inset-0"
+          style={{ objectFit: "cover" }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
       </div>
-
       <div className="container px-4 md:px-6 -mt-20 relative z-10">
         <div className="max-w-3xl mx-auto bg-background rounded-lg shadow-lg p-6 md:p-10 border border-border">
           <Link href="/blog">
@@ -73,9 +87,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
               Back to Blog
             </Button>
           </Link>
-
           <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">{post.title}</h1>
-
           <div className="flex flex-wrap items-center gap-4 mt-4 text-muted-foreground">
             <div className="flex items-center">
               <Calendar className="mr-2 h-4 w-4" />
@@ -94,11 +106,9 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
               </div>
             )}
           </div>
-
-          <div
-            className="mt-8 prose prose-gray dark:prose-invert max-w-none"
-            dangerouslySetInnerHTML={{ __html: post.content }}
-          />
+          <div className="mt-8 prose prose-gray dark:prose-invert max-w-none whitespace-pre-line">
+            {content}
+          </div>
         </div>
       </div>
 
