@@ -27,7 +27,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       <div className="flex flex-col">
         <div className="container px-4 md:px-6 py-12">
           <Link href="/blog">
-            <Button variant="ghost" size="sm" className="mb-4">
+            <Button className="mb-4">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Blog
             </Button>
@@ -68,7 +68,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       <div className="container px-4 md:px-6 -mt-20 relative z-10">
         <div className="max-w-3xl mx-auto bg-background rounded-lg shadow-lg p-6 md:p-10 border border-border">
           <Link href="/blog">
-            <Button variant="ghost" size="sm" className="mb-4">
+            <Button className="mb-4">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Blog
             </Button>
