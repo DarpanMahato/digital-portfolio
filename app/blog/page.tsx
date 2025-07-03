@@ -42,9 +42,9 @@ export default async function BlogPage() {
                 key={post.id}
                 className="overflow-hidden border rounded-lg bg-white dark:bg-gray-900 hover:shadow-lg transition-shadow"
               >
-                {post.coverImage && (
+                {post.heroImage?.url && (
                   <img
-                    src={post.coverImage}
+                    src={post.heroImage.url}
                     alt={post.title}
                     width={400}
                     height={225}
