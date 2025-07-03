@@ -3,26 +3,25 @@ import Link from "next/link"
 import { ArrowLeft, Calendar, User, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { NewsletterForm } from "@/components/newsletter-form"
-import { db, blogPosts } from "@/lib/db"
-import { eq } from "drizzle-orm"
-import { formatDate } from "@/lib/utils"
 import { notFound } from "next/navigation"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
 async function getBlogPost(slug: string) {
   try {
-    const post = await db.select().from(blogPosts).where(eq(blogPosts.slug, slug)).limit(1)
-    return { post: post[0] || null, error: null }
+    const res = await fetch(`https://payload.darpanmahato.com.np/api/posts?where[slug][equals]=${slug}`)
+    if (!res.ok) throw new Error("Failed to fetch post")
+    const data = await res.json()
+    return { post: data.docs?.[0] || null, error: null }
   } catch (error) {
     console.error("Error fetching blog post:", error)
     return { post: null, error: error }
   }
 }
 
-export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { post, error } = await getBlogPost((await params).slug)
+export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+  const { post, error } = await getBlogPost(params.slug)
 
-  // If there's a database error, show an error message
+  // If there's a fetch error, show an error message
   if (error) {
     return (
       <div className="flex flex-col">
@@ -35,10 +34,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           </Link>
 
           <Alert variant="destructive" className="mb-8">
-            <AlertTitle>Database Error</AlertTitle>
+            <AlertTitle>API Error</AlertTitle>
             <AlertDescription>
-              There was an error connecting to the database. Please try refreshing the page or contact support if the
-              issue persists.
+              There was an error fetching the blog post. Please try refreshing the page or contact support if the issue persists.
             </AlertDescription>
           </Alert>
 
@@ -81,12 +79,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <div className="flex flex-wrap items-center gap-4 mt-4 text-muted-foreground">
             <div className="flex items-center">
               <Calendar className="mr-2 h-4 w-4" />
-              <span>{formatDate(post.createdAt)}</span>
+              <span>{post.createdAt ? new Date(post.createdAt).toLocaleDateString() : ''}</span>
             </div>
-            <div className="flex items-center">
-              <User className="mr-2 h-4 w-4" />
-              <span>{post.author}</span>
-            </div>
+            {post.author && (
+              <div className="flex items-center">
+                <User className="mr-2 h-4 w-4" />
+                <span>{post.author}</span>
+              </div>
+            )}
             {post.readTime && (
               <div className="flex items-center">
                 <Clock className="mr-2 h-4 w-4" />
