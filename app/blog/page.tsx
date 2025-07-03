@@ -44,8 +44,8 @@ export default async function BlogPage() {
               >
                 {post.heroImage?.url && (
                   <img
-                    src={post.heroImage.url}
-                    alt={post.title}
+                    src={post.heroImage.url.startsWith('/') ? `https://payload.darpanmahato.com.np${post.heroImage.url}` : post.heroImage.url}
+                    alt={post.heroImage.alt || post.title}
                     width={400}
                     height={225}
                     className="w-full h-48 object-cover"
