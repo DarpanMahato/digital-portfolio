@@ -2,7 +2,7 @@ import React from "react";
 
 async function getPosts() {
   // Replace with your Payload CMS API endpoint
-  const res = await fetch("https://darpanmahato.com.np/api/posts", {
+  const res = await fetch("https://payload.darpanmahato.com.np/api/posts", {
     // headers: { Authorization: "Bearer YOUR_TOKEN" }, // Uncomment if needed
     cache: "no-store",
   });
