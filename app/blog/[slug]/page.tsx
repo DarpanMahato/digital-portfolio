@@ -2,7 +2,6 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowLeft, Calendar, User, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { NewsletterForm } from "@/components/newsletter-form"
 import { notFound } from "next/navigation"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 
@@ -111,22 +110,6 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
           </div>
         </div>
       </div>
-
-      <section className="w-full py-12 md:py-24 bg-muted/40">
-        <div className="container px-4 md:px-6">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl">Subscribe to Our Newsletter</h2>
-              <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed">
-                Stay updated with the latest cybersecurity insights and tips.
-              </p>
-            </div>
-            <div className="w-full max-w-md">
-              <NewsletterForm />
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   )
 }
