@@ -1,13 +1,18 @@
-import { db, blogPosts } from "@/lib/db"; // Import blogPosts table
-import Link from "next/link";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import Image from "next/image";
-import { BlogPost } from "@/lib/types"; // Import BlogPost type from lib/types
-import { formatDate } from "@/lib/utils"; // Assuming formatDate is in utils
+import React from "react";
+
+async function getPosts() {
+  // Replace with your Payload CMS API endpoint
+  const res = await fetch("https://darpanmahato.com.np/api/posts", {
+    // headers: { Authorization: "Bearer YOUR_TOKEN" }, // Uncomment if needed
+    cache: "no-store",
+  });
+  if (!res.ok) throw new Error("Failed to fetch posts");
+  return res.json();
+}
 
 export default async function BlogPage() {
-  // Use the imported BlogPost type
-  const posts: BlogPost[] = await db.select().from(blogPosts).orderBy(blogPosts.createdAt);
+  const data = await getPosts();
+  const posts = data.docs || data.posts || [];
 
   return (
     <div className="flex flex-col">
@@ -30,29 +35,25 @@ export default async function BlogPage() {
       <section className="w-full py-12 md:py-24 lg:py-32 bg-background">
         <div className="container px-4 md:px-6">
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {posts.map((post) => ( // Type is inferred correctly now
-              <Card key={post.id} className="overflow-hidden">
-                {post.coverImage && ( // Use coverImage instead of imageUrl
-                  <Link href={`/blog/${post.slug}`}>
-                    <Image
-                      src={post.coverImage} // Use coverImage
+            {posts.map((post: any) => (
+              <div key={post.id} className="overflow-hidden border rounded-lg bg-white dark:bg-gray-900">
+                {post.coverImage && (
+                  <a href={`/blog/${post.slug}`}>
+                    <img
+                      src={post.coverImage}
                       alt={post.title}
                       width={400}
                       height={225}
                       className="w-full h-48 object-cover"
                     />
-                  </Link>
+                  </a>
                 )}
-                <CardHeader>
-                  <CardTitle>{post.title}</CardTitle>
-                  {/* Excerpt is not nullable in the schema, so no need for null check */}
-                  <CardDescription>{post.excerpt}</CardDescription>
-                </CardHeader>
-                <CardContent className="mt-auto">
-                  {/* Ensure formatDate handles Date | null if createdAt can be null */}
-                  <p className="text-sm text-muted-foreground">{post.createdAt ? formatDate(post.createdAt) : 'Date unavailable'}</p>
-                </CardContent>
-              </Card>
+                <div className="p-4">
+                  <h2 className="text-xl font-semibold">{post.title}</h2>
+                  <p className="text-gray-600 dark:text-gray-300">{post.excerpt}</p>
+                  <p className="text-sm text-muted-foreground mt-2">{post.createdAt ? new Date(post.createdAt).toLocaleDateString() : 'Date unavailable'}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
