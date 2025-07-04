@@ -153,6 +153,16 @@ export default function AddProjectForm({ onProjectAdded }: AddProjectFormProps):
       return;
     }
 
+    // Extra validation: check for empty items
+    if (items.some((item) => !item.trim())) {
+      toast({
+        title: "Validation Error",
+        description: "Project items cannot be empty.",
+        variant: "destructive"
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     // Add items as JSON string to FormData since FormData doesn't support arrays directly
