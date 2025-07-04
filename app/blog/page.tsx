@@ -1,9 +1,11 @@
 import React from "react";
 import Link from "next/link";
 
+const PAYLOAD_API_URL = process.env.PAYLOAD_API_URL || "https://payload.darpanmahato.com.np/api/posts";
+
 async function getPosts() {
-  // Replace with your Payload CMS API endpoint
-  const res = await fetch("https://payload.darpanmahato.com.np/api/posts", {
+  // Fetch from env-based Payload CMS API endpoint
+  const res = await fetch(PAYLOAD_API_URL, {
     // headers: { Authorization: "Bearer YOUR_TOKEN" }, // Uncomment if needed
     cache: "no-store",
   });
@@ -51,6 +53,7 @@ export default async function BlogPage() {
                     className="w-full h-48 object-cover"
                   />
                 )}
+                
                 <div className="p-4">
                   <h2 className="text-xl font-semibold">{post.title}</h2>
                   <p className="text-gray-600 dark:text-gray-300">{post.excerpt}</p>
