@@ -90,15 +90,20 @@ export default function AddProjectForm({ onProjectAdded }: AddProjectFormProps):
       setSelectedIcon("");
       setItems([]);
       setIsFormVisible(false);
-      
+
       // Show success message
       toast({
         title: "Success",
         description: state.message || "Project created successfully",
       });
-      
+
       // Notify parent component to refresh projects
       onProjectAdded();
+
+      // Reload the page after a short delay
+      setTimeout(() => {
+        window.location.reload();
+      }, 500);
     } else if (state?.message) {
       // Show error message if there's a message but success is false
       toast({
