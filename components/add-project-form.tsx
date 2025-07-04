@@ -144,23 +144,25 @@ export default function AddProjectForm({ onProjectAdded }: AddProjectFormProps):
    */
   const handleFormSubmit = async (formData: FormData): Promise<void> => {
     // Client-side validation before submission
-    if (!title.trim() || !description.trim() || !selectedIcon || items.length === 0) {
+    if (!title.trim() || !description.trim() || !selectedIcon) {
       toast({
         title: "Validation Error",
-        description: "Please fill in all fields and add at least one item.",
+        description: "Please fill in all fields.",
         variant: "destructive"
       });
       return;
     }
-
+    if (items.length === 0) {
+      toast({
+        title: "Validation Error",
+        description: "Please add at least one item using the + button before creating the project.",
+        variant: "destructive"
+      });
+      return;
+    }
     setIsSubmitting(true);
-
-    // Add items as JSON string to FormData since FormData doesn't support arrays directly
     formData.append('items', JSON.stringify(items));
-
-    // Using formAction from useActionState
     await formAction(formData);
-
     setIsSubmitting(false);
   };
   
