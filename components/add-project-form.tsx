@@ -163,6 +163,14 @@ export default function AddProjectForm({ onProjectAdded }: AddProjectFormProps):
         description: "Please add at least one item using the + button before creating the project.",
         variant: "destructive"
       });
+      // Also visually highlight the items input for accessibility
+      const itemInput = document.getElementById('newItem');
+      if (itemInput) {
+        itemInput.classList.add('border-red-500', 'ring-2', 'ring-red-500');
+        setTimeout(() => {
+          itemInput.classList.remove('border-red-500', 'ring-2', 'ring-red-500');
+        }, 1500);
+      }
       return;
     }
     setIsSubmitting(true);
