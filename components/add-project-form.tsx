@@ -153,16 +153,6 @@ export default function AddProjectForm({ onProjectAdded }: AddProjectFormProps):
       return;
     }
 
-    // Extra validation: check for empty items
-    if (items.some((item) => !item.trim())) {
-      toast({
-        title: "Validation Error",
-        description: "Project items cannot be empty.",
-        variant: "destructive"
-      });
-      return;
-    }
-
     setIsSubmitting(true);
 
     // Add items as JSON string to FormData since FormData doesn't support arrays directly
@@ -176,7 +166,11 @@ export default function AddProjectForm({ onProjectAdded }: AddProjectFormProps):
   
   return (
     <div className="mb-10">
-      <Button variant={isFormVisible ? "secondary" : "default"} onClick={toggleForm} className="mb-4">
+      <Button
+        onClick={toggleForm}
+        className={`mb-4 ${isFormVisible ? 'bg-secondary text-secondary-foreground hover:bg-secondary/80' : 'bg-primary text-primary-foreground hover:bg-primary/90'}`}
+        type="button"
+      >
         {isFormVisible ? "Cancel" : "Add New Project"}
       </Button>
       
@@ -238,7 +232,7 @@ export default function AddProjectForm({ onProjectAdded }: AddProjectFormProps):
                     placeholder="e.g., Web Application Testing"
                     onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addItem())}
                   />
-                  <Button type="button" onClick={addItem} size="sm">
+                  <Button type="button" onClick={addItem} className="h-9 rounded-md px-3">
                     <Plus className="h-4 w-4" />
                   </Button>
                 </div>
@@ -252,10 +246,8 @@ export default function AddProjectForm({ onProjectAdded }: AddProjectFormProps):
                           <span>{item}</span>
                           <Button 
                             type="button" 
-                            variant="ghost" 
-                            size="sm" 
                             onClick={() => removeItem(index)}
-                            className="h-6 w-6 p-0"
+                            className="h-6 w-6 p-0 hover:bg-accent hover:text-accent-foreground"
                           >
                             <X className="h-4 w-4" />
                           </Button>
